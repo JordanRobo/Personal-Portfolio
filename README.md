@@ -1,38 +1,55 @@
-# create-svelte
+# RPG-Style Portfolio Website
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Introduction
+Welcome to the GitHub repository of my RPG-style portfolio website. This project is an interactive web application designed as a map in an RPG game to showcase my journey from Marketing to Full Stack Development. The site is built using Svelte, SvelteKit, Three.js for 3D interactive elements, and Firebase for backend services.
 
-## Creating a project
+## Features
+- **Interactive RPG Map:** A visually engaging homepage that represents different aspects of my portfolio as elements of an RPG map.
+- **Svelte & SvelteKit:** Utilizes the reactive and efficient framework for building responsive web interfaces.
+- **Three.js:** 3D interactive map and features for a dynamic user experience.
+- **Firebase:** Backend integration for features like blog posts, contact forms, and project data.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+## Project Structure
+```
+/src
+  /components - Reusable Svelte components
+  /routes - SvelteKit pages representing different sections of the map
+  /threejs - Three.js components and utilities
 ```
 
-## Developing
+## Getting Started
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Prerequisites
+- Node.js (LTS version recommended)
+- Git
+- Firebase account (for backend services)
 
-```bash
-npm run dev
+### Installation
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/JordanRobo/portfolio.git
+   ```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+2. **Navigate to the project directory**
+   ```bash
+   cd portfolio
+   ```
 
-## Building
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-To create a production version of your app:
+4. **Set up Firebase**
+   - Create a new project in Firebase.
+   - Configure Firestore, Authentication, and other required services.
+   - Add your Firebase project configurations to a `.env` file.
 
-```bash
-npm run build
-```
+5. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Deployment
+- The project is ready for deployment to platforms like Vercel, Netlify, or Firebase Hosting.
+- Make sure to set environment variables in your hosting provider.
