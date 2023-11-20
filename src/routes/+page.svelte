@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { fade } from 'svelte/transition';
     import Preloader from '../components/Preloader.svelte';
-    import ThreeDCylinder from '../components/ThreeDCylinder.svelte';
+    import ThreeDScene from '../components/ThreeDScene.svelte';
 
     let isLoading = true;
 
@@ -21,7 +21,7 @@
   <Preloader />
 {:else}
 <div in:fade={{ duration: 3000 }}>
-  <ThreeDCylinder />
+  <ThreeDScene />
   <!-- Other main content -->
 </div>
 {/if}
