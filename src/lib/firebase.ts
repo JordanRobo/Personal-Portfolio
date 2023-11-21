@@ -1,5 +1,6 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore'; // Import other Firebase services as needed
+import { initializeApp, type FirebaseApp, getApps } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from 'firebase/storage';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -12,5 +13,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-export const db = app.firestore(); // Export other Firebase services as needed
+let firebaseApp: FirebaseApp;
+
+if (!getApps().length) {
+  firebaseApp = initializeApp(firebaseConfig);
+} else {
+  firebaseApp = getApps()[0];
+}
+
+
+export const db = getFirestore(firebaseApp);
+export const storage = getStorage(firebaseApp)

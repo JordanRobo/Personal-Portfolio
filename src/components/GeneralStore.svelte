@@ -1,0 +1,3 @@
+<div>
+    General Store
+</div>
