@@ -1,3 +1,3 @@
 <div>
-    Message Board
+    <p>Message Board</p>
 </div>

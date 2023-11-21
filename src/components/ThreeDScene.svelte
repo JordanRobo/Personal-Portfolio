@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onDestroy, onMount } from 'svelte';
+    import { slide } from 'svelte/transition';
     import * as THREE from 'three';
     import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
     import { Sky } from 'three/examples/jsm/objects/Sky.js';
@@ -122,9 +123,9 @@
     const animate = () => {
         requestAnimationFrame(animate);
 
-        if (myModel) {
-            myModel.rotation.y += 0.001; // This value might be too high for smooth animation
-        }
+        //if (myModel) {
+        //    myModel.rotation.y += 0.001; // This value might be too high for smooth animation
+        //}
 
         controls.update();
         renderer.render(scene, camera);
@@ -172,16 +173,65 @@
         window.removeEventListener('click', onCanvasClick);
         window.removeEventListener('resize', onWindowResize);
     });
+
+    function clickOutside(node: HTMLDivElement, { enabled: initialEnabled, cb }: { enabled: true; cb: () => void; }) {
+        const handleOutsideClick = ({ target }) => {
+            if (!node.contains(target)) {
+                cb();
+            }
+        };
+
+        function update({ enabled }) {
+            if (enabled) {
+                window.addEventListener('click', handleOutsideClick);
+            } else {
+                window.removeEventListener('click', handleOutsideClick);
+            }
+        }
+
+        update({ enabled: initialEnabled });
+
+        return {
+            update,
+            destroy() {
+                window.removeEventListener('click', handleOutsideClick);
+            }
+        };
+    }
+
+    function closeDrawer() {
+        showGeneralStore = false;
+        showMessageBoard = false;
+        showFarm = false;
+    }
 </script>
 
 <div bind:this={container}></div>
 
 {#if showGeneralStore}
-   <GeneralStore />
+    <div class="fixed top-0 right-0 w-4/12 h-full z-50"
+         transition:slide={{ duration: 300, x: 500 }}
+         use:clickOutside={{ enabled: showGeneralStore, cb: closeDrawer }}>
+        <div class="nes-container is-rounded bg-white shadow-lg">
+            <GeneralStore />
+        </div>
+    </div>
 {/if}
 {#if showMessageBoard}
-   <MessageBoard />
+    <div class="fixed top-0 right-0 w-4/12 h-full z-50"
+         transition:slide={{ duration: 300, x: 500 }}
+         use:clickOutside={{ enabled: showMessageBoard, cb: closeDrawer }}>
+        <div class="nes-container is-rounded bg-white shadow-lg">
+            <MessageBoard />
+        </div>
+    </div>
 {/if}
 {#if showFarm}
-    <Farm />
+    <div class="fixed top-0 right-0 w-4/12 h-full z-50"
+         transition:slide={{ duration: 300, x: 500 }}
+         use:clickOutside={{ enabled: showFarm, cb: closeDrawer }}>
+        <div class="nes-container is-rounded bg-white shadow-lg">
+            <Farm />
+        </div>
+    </div>
 {/if}

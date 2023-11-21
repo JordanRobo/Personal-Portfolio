@@ -1,3 +1,3 @@
 <div>
-    General Store
+    <p>General Store</p>
 </div>
