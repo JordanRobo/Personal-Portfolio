@@ -1,27 +1,27 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { fade } from 'svelte/transition';
     import Preloader from '../components/Preloader.svelte';
-    import ThreeDScene from '../components/ThreeDScene.svelte';
+    import Intro from '../components/Intro.svelte';
+    import background from '$lib/background.png';
 
     let isLoading = true;
 
-    onMount(async () => {
-        // Simulated loading
-        setTimeout(() => { isLoading = false; }, 4800);
-
-        // Wait for preloader to almost finish fading out before showing main content
-        setTimeout(() => {
-            // Logic to show the main content can be added here if needed
-        }, 2200); // Start just before the preloader finishes
+    onMount(() => {
+      setTimeout(() => { isLoading = false; }, 4800);      
     });
+
 </script>
-  
-{#if isLoading}
-  <Preloader />
-{:else}
-<div in:fade={{ duration: 3000 }}>
-  <ThreeDScene />
-  <!-- Other main content -->
+
+<div class="relative">
+  <div class="fixed top-0 left-0 w-full h-full bg-fixed bg-cover brightness-50" style="background-image:url({background})"></div>
+  {#if isLoading}
+    <div class="absolute z-20 top-0 left-0 w-full h-full">
+      <Preloader />
+    </div>
+    
+  {:else}
+    <div class="absolute z-10 top-0 left-0 w-full h-full">
+      <Intro />
+    </div>
+  {/if}
 </div>
-{/if}

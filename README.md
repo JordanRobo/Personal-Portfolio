@@ -1,12 +1,10 @@
 # RPG-Style Portfolio Website
 
 ## Introduction
-Welcome to the GitHub repository of my RPG-style portfolio website. This project is an interactive web application designed as a map in an RPG game to showcase my journey from Marketing to Full Stack Development. The site is built using Svelte, SvelteKit, Three.js for 3D interactive elements, and Firebase for backend services.
+Welcome to the GitHub repository of my RPG-style portfolio website. This project is an interactive web application designed as a RPG game to showcase my journey from Marketing to Full Stack Development. The site is built using Svelte, SvelteKit, TailwindCSS, NES.CSS and Firebase for backend services.
 
 ## Features
-- **Interactive RPG Map:** A visually engaging homepage that represents different aspects of my portfolio as elements of an RPG map.
 - **Svelte & SvelteKit:** Utilizes the reactive and efficient framework for building responsive web interfaces.
-- **Three.js:** 3D interactive map and features for a dynamic user experience.
 - **Firebase:** Backend integration for features like blog posts, contact forms, and project data.
 
 ## Project Structure
